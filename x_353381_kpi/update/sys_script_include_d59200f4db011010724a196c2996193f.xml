@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_353381_kpi.CollectionUtil</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Generic utility functions to help handling objects and arrays</description>
+        <name>CollectionUtil</name>
+        <script><![CDATA[var CollectionUtil = Class.create();
+CollectionUtil.prototype = {
+    initialize: function() {
+        var debugProp = gs.getProperty("procori.script.debug.collectionutil");
+        if (debugProp == "true") {
+            this.debugMode = true;
+        } else {
+            this.debugMode = false;
+        }
+
+    },
+    DEBUG_PREFIX: "COLLECTION_UTIL - ",
+
+    /* Container function for array merging
+     * notes for usage: Try using sorted arrays where possible, as the function for sorted arrays is much faster than that for unsorted arrays
+     *
+     * @param items - The "base" array we want to move data into, usually the larger of the two
+     * @param extensions - The array we wish to merge into items.
+     * @param prop - The key value on which we match rows in the array.
+     * @param isSorted - determines which function to use. Mark as true when both arrays are sorted alphabetically on [prop].
+     */
+    mergeArraysByProperty: function(items, extensions, prop, isSorted) {
+        try {
+            if (isSorted) {
+                this._mergeSortedArrays(items, extensions, prop);
+            } else {
+                this._mergeUnsortedArrays(items, extensions, prop);
+            }
+            return items;
+        } catch (e) {
+            var funcName = "mergeSortedArrays";
+            if (!isSorted) {
+                funcName = "mergeUnsortedArrays";
+            }
+            gs.debug(this.DEBUG_PREFIX + "Error in " + funcName + ": " + e);
+            return false;
+        }
+    },
+    /* _mergeUnsortedArrays - merges two unsorted arrays using Underscore
+     *
+     * @param items - The "base" array we want to move data into, usually the larger of the two
+     * @param extensions - The array we wish to merge into items.
+     * @param prop - The key value on which we match rows in the array.
+     */
+    _mergeUnsortedArrays: function(items, extensions, prop) {
+        var _ = sn_codesearch._;
+        _.each(extensions, function(arr2obj) {
+            var arr1obj = _.find(items, function(arr1obj) {
+                return arr1obj[prop] === arr2obj[prop];
+            });
+            //Extend items with the values found in extensions
+            _.extend(arr1obj, arr2obj);
+        });
+    },
+    /* _mergeSortedArrays - Merges two sorted arrays using a binary searching algorithm
+     *
+     * @param items - The "base" array we want to move data into, usually the larger of the two
+     * @param extensions - The array we wish to merge into items.
+     * @param prop - The key value on which we match rows in the array.
+     */
+    _mergeSortedArrays: function(items, extensions, prop) {
+        //prepare some variables
+        var finalArray = [];
+        var searchResult;
+
+        //Loop through our second array. these are what we want to merge into our first array
+        for (var i = 0; i < extensions.length; i++) {
+            var thisRecord = extensions[i];
+            var keys = Object.keys(thisRecord);
+            //Compare entries in arr2 to arr1 to find a match
+            searchResult = this.binarySearch(items, thisRecord, prop);
+            if (!searchResult) {
+                throw "Error in Binary Search. See logs for more information.";
+            }
+            //Merge objects in this  record into found match
+            for (var c in keys) {
+                searchResult[keys[c]] = thisRecord[keys[c]];
+            }
+        }
+    },
+
+    /* binarySearch - Searches through a sorted array to find a matching row
+     * WARNING: this function will produce a mismatch if the input array isn't alphabetically sorted on [prop]
+     *
+     * @param items - The "base" array we want to move data into, usually the larger of the two
+     * @param searchArg - The item we want to find a match for in the main array
+     * @param prop - The key value on which we match rows in the array. These need to be sorted in both arrays in order to work
+     *
+     * @returns - obj - the matching object from [items])
+     */
+    binarySearch: function(items, searchArg, prop) {
+        try {
+            var firstIndex = 0,
+                lastIndex = items.length - 1,
+                middleIndex = Math.floor((lastIndex + firstIndex) / 2);
+            //Start the search in the centre of the first array.
+            while (items[middleIndex][prop] != searchArg[prop] && firstIndex < lastIndex) {
+                //Climb down if our found property has a lower value than what we're looking for
+                if (searchArg[prop] < items[middleIndex][prop]) {
+                    lastIndex = middleIndex - 1;
+                    //Climb up if our found property has a higher value than what we're looking for
+                } else if (searchArg[prop] > items[middleIndex][prop]) {
+                    firstIndex = middleIndex + 1;
+                }
+                //exit our loop when we've found a match or run through the entire array
+                middleIndex = Math.floor((lastIndex + firstIndex) / 2);
+            }
+            //Error handling for searches resulting in a mis-match
+            if (items[middleIndex][prop] != searchArg[prop]) {
+                throw "No match found. Please ensure that [items] is sorted alphabetically on the correct property";
+            }
+            return items[middleIndex];
+        } catch (e) {
+            gs.debug(this.DEBUG_PREFIX + "Error in binarysearch: " + e, this.DEBUG_PREFIX);
+            return false;
+        }
+    },
+
+    type: 'CollectionUtil'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Medni</sys_created_by>
+        <sys_created_on>2020-05-25 08:19:57</sys_created_on>
+        <sys_id>d59200f4db011010724a196c2996193f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CollectionUtil</sys_name>
+        <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
+        <sys_update_name>sys_script_include_d59200f4db011010724a196c2996193f</sys_update_name>
+        <sys_updated_by>Medni</sys_updated_by>
+        <sys_updated_on>2020-05-25 08:19:57</sys_updated_on>
+    </sys_script_include>
+</record_update>

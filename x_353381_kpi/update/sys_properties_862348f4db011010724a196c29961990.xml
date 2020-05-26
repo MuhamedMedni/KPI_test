@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description/>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_353381_kpi.procori.script.debug.collectionutil</name>
+        <read_roles/>
+        <suffix>procori.script.debug.collectionutil</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>Medni</sys_created_by>
+        <sys_created_on>2020-05-25 08:21:57</sys_created_on>
+        <sys_id>862348f4db011010724a196c29961990</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_353381_kpi.procori.script.debug.collectionutil</sys_name>
+        <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
+        <sys_update_name>sys_properties_862348f4db011010724a196c29961990</sys_update_name>
+        <sys_updated_by>Medni</sys_updated_by>
+        <sys_updated_on>2020-05-25 08:21:57</sys_updated_on>
+        <type>boolean</type>
+        <value>true</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=862348f4db011010724a196c29961990"/>
+</record_update>

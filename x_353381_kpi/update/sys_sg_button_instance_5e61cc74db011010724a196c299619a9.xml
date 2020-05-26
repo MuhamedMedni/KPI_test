@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_button_instance">
+    <sys_sg_button_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <button display_value="Delete Swipe (KPI Definition)">ce61cc74db011010724a196c299619a7</button>
+        <color_theme>primary</color_theme>
+        <description/>
+        <field_name/>
+        <icon/>
+        <label>Delete</label>
+        <location>leading_swipe</location>
+        <name>Delete (KPI Definition)</name>
+        <order/>
+        <parent>4e61cc74db011010724a196c299619a5</parent>
+        <parent_table>sys_sg_master_item</parent_table>
+        <sys_class_name>sys_sg_button_instance</sys_class_name>
+        <sys_created_by>Medni</sys_created_by>
+        <sys_created_on>2020-05-25 08:14:00</sys_created_on>
+        <sys_id>5e61cc74db011010724a196c299619a9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Delete (KPI Definition)</sys_name>
+        <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
+        <sys_update_name>sys_sg_button_instance_5e61cc74db011010724a196c299619a9</sys_update_name>
+        <sys_updated_by>Medni</sys_updated_by>
+        <sys_updated_on>2020-05-25 08:14:00</sys_updated_on>
+        <table/>
+    </sys_sg_button_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=5e61cc74db011010724a196c299619a9"/>
+</record_update>

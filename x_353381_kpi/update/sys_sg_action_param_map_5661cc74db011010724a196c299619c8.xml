@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_action_param_map">
+    <sys_sg_action_param_map action="INSERT_OR_UPDATE">
+        <button display_value="Edit Button (KPI Process)">5661cc74db011010724a196c299619c6</button>
+        <item_parameter display_value="KPI Process id">d661cc74db011010724a196c299619c5</item_parameter>
+        <sys_class_name>sys_sg_action_param_map</sys_class_name>
+        <sys_created_by>Medni</sys_created_by>
+        <sys_created_on>2020-05-25 08:14:00</sys_created_on>
+        <sys_id>5661cc74db011010724a196c299619c8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>d661cc74db011010724a196c299619c5</sys_name>
+        <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
+        <sys_update_name>sys_sg_action_param_map_5661cc74db011010724a196c299619c8</sys_update_name>
+        <sys_updated_by>Medni</sys_updated_by>
+        <sys_updated_on>2020-05-25 08:14:00</sys_updated_on>
+        <ui_parameter display_value="ID">5261cc74db011010724a196c299619c7</ui_parameter>
+    </sys_sg_action_param_map>
+</record_update>

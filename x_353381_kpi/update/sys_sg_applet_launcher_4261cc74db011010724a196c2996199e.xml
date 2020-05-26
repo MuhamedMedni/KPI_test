@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_applet_launcher">
+    <sys_sg_applet_launcher action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <available_offline>false</available_offline>
+        <header_button/>
+        <header_titles/>
+        <hide_empty_sections>true</hide_empty_sections>
+        <name>KPI Definition</name>
+        <required_roles>x_353381_kpi.user,x_353381_kpi.manager</required_roles>
+        <search_config/>
+        <sys_class_name>sys_sg_applet_launcher</sys_class_name>
+        <sys_created_by>Medni</sys_created_by>
+        <sys_created_on>2020-05-25 08:13:59</sys_created_on>
+        <sys_id>4261cc74db011010724a196c2996199e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>KPI Definition</sys_name>
+        <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
+        <sys_update_name>sys_sg_applet_launcher_4261cc74db011010724a196c2996199e</sys_update_name>
+        <sys_updated_by>Medni</sys_updated_by>
+        <sys_updated_on>2020-05-25 08:13:59</sys_updated_on>
+        <title>KPI Definition</title>
+    </sys_sg_applet_launcher>
+</record_update>

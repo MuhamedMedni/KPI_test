@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, kpiSearchService) {
+	var c = this;
+	
+	$scope.date = false;
+	$scope.duration = false;
+	
+	$scope.list = kpiSearchService.timeDurations.list;
+  $scope.selected = $scope.list[0];
+	
+c.delivery = {
+   value: c.data.date,
+   name: 'delivery'
+
+};
+
+
+$scope.updateView = function(x){
+	
+	if(x == "Specific day"){
+		$scope.date = true;
+		$scope.duration = false;
+		$scope.test = "";
+		
+	}
+	if(x == "Time duration"){
+		$scope.duration = true;
+		$scope.date = false;
+		c.start.value = "";
+		c.end.value = "";
+	}
+}	
+	
+$scope.dateValueChanged = function(){
+	console.log(c.delivery);
+}
+	
+	
+$scope.setModel = function(duration){
+	$scope.pickedDuration = duration;
+}
+
+$scope.fetchDataDuration = function(selected){
+	 kpiSearchService.reload(selected.query);
+}
+	
+$scope.fetchDataSpeceificDates = function(start, end){
+	var query = "sys_created_onBETWEENjavascript:gs.dateGenerate("+start+",'00:00:00')@javascript:gs.dateGenerate("+end+",'23:59:59')";
+	kpiSearchService.reload(query);
+}
+
+
+//date pickers
+	
+c.start = {
+	value: "",
+	name: ""
+}
+	
+c.end = {
+	value: "",
+	name: ""
+}
+
+	
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.flexbox {
+	display: flex;
+  flex-direction: row;
+  //flex-basis: fit-content;
+  //align-items: center;
+  //justify-content: center;
+	width: 75%;
+}
+
+.item {
+	width: 30%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>kpi_dashboard</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>KPI Dashboard</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+data.date = new GlideDate();
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>Medni</sys_created_by>
+        <sys_created_on>2020-05-25 08:24:27</sys_created_on>
+        <sys_id>d3c38cf4db011010724a196c2996193a</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>KPI Dashboard</sys_name>
+        <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
+        <sys_update_name>sp_widget_d3c38cf4db011010724a196c2996193a</sys_update_name>
+        <sys_updated_by>Medni</sys_updated_by>
+        <sys_updated_on>2020-05-25 08:28:27</sys_updated_on>
+        <template><![CDATA[<!-- Ett fält för range type, alterera två datepickers alt en select baserat på vald date range -->
+<!-- Testa använd service för att förvarra "relative range" värdena-->
+<!-- Se över sett att få dessa att lägga sig horisontellt, exempelvis via CSS flexbox-->
+
+<div  class="panel panel-default">
+  <div class="panel-body flexbox">
+    
+    <!-- Type of duration variable -->
+		<div class="form-group" style="margin-right:10px">
+  		<label>Select watch type of duration:</label>
+  		<select class="form-control" ng-model="durationType" ng-change="updateView(durationType)">
+    		<option>Specific day</option>
+    		<option>Time duration</option>
+  		</select>
+		</div>
+    
+    
+    
+    <!-- Time duration variable -->
+ 		<div ng-if="duration == true" class="form-group">
+    	<label>Select time duration of your choice</label> 
+  		<select class="form-control" ng-options="item as item.label for item in list track by item.label" ng-model="selected">
+  		</select>
+		</div>
+    
+
+    <!-- Sp Date Pickers -->
+   <div ng-if="date == true" class="flexbox">
+    <div class="item">
+      <label>Start Date:</label>
+			<sp-date-picker field="c.start" ng-model="c.start.value" sn-change="dateValueChanged()" ></sp-date-picker>
+    </div> 
+    <div class="item"> 
+      <label>End Date:</label>
+  		<sp-date-picker field="c.end" ng-model="c.end.value" sn-change="dateValueChanged()" ></sp-date-picker>
+    </div> 
+   </div>
+    
+    
+  </div> 
+   <button class="btn btn-primary" ng-click="fetchDataDuration(selected)">Send</button>
+</div>
+
+]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_number">
+    <sys_number action="INSERT_OR_UPDATE">
+        <category display_value="" name="x_353381_kpi_kpi_definition">x_353381_kpi_kpi_definition</category>
+        <maximum_digits>6</maximum_digits>
+        <number>2000</number>
+        <prefix>KPI</prefix>
+        <sys_class_name>sys_number</sys_class_name>
+        <sys_created_by>Medni</sys_created_by>
+        <sys_created_on>2020-05-25 08:11:38</sys_created_on>
+        <sys_id>73d00874db011010724a196c29961946</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>KPI</sys_name>
+        <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
+        <sys_update_name>sys_number_73d00874db011010724a196c29961946</sys_update_name>
+        <sys_updated_by>Medni</sys_updated_by>
+        <sys_updated_on>2020-05-25 08:11:38</sys_updated_on>
+    </sys_number>
+</record_update>

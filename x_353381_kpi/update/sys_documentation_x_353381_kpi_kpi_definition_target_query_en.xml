@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="target_query" label="Target query" language="en" table="x_353381_kpi_kpi_definition">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>target_query</element>
+            <help/>
+            <hint/>
+            <label>Target query</label>
+            <language>en</language>
+            <name>x_353381_kpi_kpi_definition</name>
+            <plural>Target queries</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>Medni</sys_created_by>
+            <sys_created_on>2020-05-25 08:18:40</sys_created_on>
+            <sys_id>2e728cb4db011010724a196c299619eb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Target query</sys_name>
+            <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
+            <sys_update_name>sys_documentation_x_353381_kpi_kpi_definition_target_query_en</sys_update_name>
+            <sys_updated_by>Medni</sys_updated_by>
+            <sys_updated_on>2020-05-25 08:18:40</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

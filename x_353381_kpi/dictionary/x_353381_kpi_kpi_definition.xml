@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="KPI Definition" max_length="40" name="x_353381_kpi_kpi_definition" sizeclass="0" type="collection">
+        <element label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Base query" max_length="4000" name="base_query" type="conditions"/>
+        <element label="Maximum" max_length="40" name="maximum" type="integer"/>
+        <element label="Minimum" max_length="40" name="minimum" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Name" max_length="128" name="name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Process" max_length="40" name="process" type="string"/>
+        <element label="Target query" max_length="4000" name="target_query" type="conditions"/>
+        <element attributes="base_start=true" label="Table" max_length="80" name="u_table_name" type="table_name"/>
+    </element>
+</database>

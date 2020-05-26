@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="" label="KPI Process" language="en" table="x_353381_kpi_kpi_process">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element/>
+            <help/>
+            <hint/>
+            <label>KPI Process</label>
+            <language>en</language>
+            <name>x_353381_kpi_kpi_process</name>
+            <plural>KPI Process</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>Medni</sys_created_by>
+            <sys_created_on>2020-05-25 08:13:01</sys_created_on>
+            <sys_id>00310c74db011010724a196c29961936</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>KPI Process</sys_name>
+            <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
+            <sys_update_name>sys_documentation_x_353381_kpi_kpi_process__en</sys_update_name>
+            <sys_updated_by>Medni</sys_updated_by>
+            <sys_updated_on>2020-05-25 08:13:01</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
