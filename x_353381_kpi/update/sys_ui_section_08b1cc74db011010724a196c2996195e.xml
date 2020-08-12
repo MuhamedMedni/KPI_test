@@ -3,126 +3,182 @@
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>name</element>
             <position>0</position>
-            <sys_created_by>Medni</sys_created_by>
-            <sys_created_on>2020-05-25 08:18:40</sys_created_on>
-            <sys_id>36728cb4db011010724a196c299619fd</sys_id>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>0d92ee8edb6a1010724a196c299619cd</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
-            <sys_updated_by>Medni</sys_updated_by>
-            <sys_updated_on>2020-05-25 08:18:40</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>process</element>
-            <position>1</position>
-            <sys_created_by>Medni</sys_created_by>
-            <sys_created_on>2020-05-25 08:18:40</sys_created_on>
-            <sys_id>b6728cb4db011010724a196c299619fd</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
-            <sys_updated_by>Medni</sys_updated_by>
-            <sys_updated_on>2020-05-25 08:18:40</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>active</element>
-            <position>2</position>
-            <sys_created_by>Medni</sys_created_by>
-            <sys_created_on>2020-05-25 08:18:40</sys_created_on>
-            <sys_id>3a728cb4db011010724a196c299619fd</sys_id>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>c592ee8edb6a1010724a196c299619ce</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
-            <sys_updated_by>Medni</sys_updated_by>
-            <sys_updated_on>2020-05-25 08:18:40</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>process</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>4d92ee8edb6a1010724a196c299619ce</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_kpi_process</element>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>0992ee8edb6a1010724a196c299619f4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>active</element>
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>8d92ee8edb6a1010724a196c299619f4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>type</element>
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>0592ee8edb6a1010724a196c299619f5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>3</position>
-            <sys_created_by>Medni</sys_created_by>
-            <sys_created_on>2020-05-25 08:18:40</sys_created_on>
-            <sys_id>ba728cb4db011010724a196c299619fd</sys_id>
+            <position>6</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>8992ee8edb6a1010724a196c299619f5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
-            <sys_updated_by>Medni</sys_updated_by>
-            <sys_updated_on>2020-05-25 08:18:40</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_table_name</element>
-            <position>4</position>
-            <sys_created_by>Medni</sys_created_by>
-            <sys_created_on>2020-05-25 08:18:40</sys_created_on>
-            <sys_id>3e728cb4db011010724a196c299619fd</sys_id>
+            <position>7</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>0192ee8edb6a1010724a196c299619f6</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
-            <sys_updated_by>Medni</sys_updated_by>
-            <sys_updated_on>2020-05-25 08:18:40</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>aggregate_field</element>
+            <position>8</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>8592ee8edb6a1010724a196c299619f6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>base_query</element>
-            <position>5</position>
-            <sys_created_by>Medni</sys_created_by>
-            <sys_created_on>2020-05-25 08:18:40</sys_created_on>
-            <sys_id>be728cb4db011010724a196c299619fd</sys_id>
+            <position>9</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>0d92ee8edb6a1010724a196c299619f6</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
-            <sys_updated_by>Medni</sys_updated_by>
-            <sys_updated_on>2020-05-25 08:18:40</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>target_query</element>
-            <position>6</position>
-            <sys_created_by>Medni</sys_created_by>
-            <sys_created_on>2020-05-25 08:18:40</sys_created_on>
-            <sys_id>32728cb4db011010724a196c299619fe</sys_id>
+            <position>10</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>8192ee8edb6a1010724a196c299619f7</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
-            <sys_updated_by>Medni</sys_updated_by>
-            <sys_updated_on>2020-05-25 08:18:40</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>minimum</element>
-            <position>7</position>
-            <sys_created_by>Medni</sys_created_by>
-            <sys_created_on>2020-05-25 08:18:40</sys_created_on>
-            <sys_id>b2728cb4db011010724a196c299619fe</sys_id>
+            <position>11</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>0992ee8edb6a1010724a196c299619f7</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
-            <sys_updated_by>Medni</sys_updated_by>
-            <sys_updated_on>2020-05-25 08:18:40</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>maximum</element>
-            <position>8</position>
-            <sys_created_by>Medni</sys_created_by>
-            <sys_created_on>2020-05-25 08:18:40</sys_created_on>
-            <sys_id>36728cb4db011010724a196c299619fe</sys_id>
+            <position>12</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-12 06:44:45</sys_created_on>
+            <sys_id>8d92ee8edb6a1010724a196c299619f7</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_353381_kpi_kpi_definition" sys_domain="global" view="Default view">08b1cc74db011010724a196c2996195e</sys_ui_section>
-            <sys_updated_by>Medni</sys_updated_by>
-            <sys_updated_on>2020-05-25 08:18:40</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-12 06:44:45</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

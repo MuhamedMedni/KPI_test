@@ -10,23 +10,23 @@
         <roles/>
         <short_description/>
         <size>md</size>
-        <sp_column display_value="1">82a6c0b8db011010724a196c29961969</sp_column>
-        <sp_widget display_value="Project Kpi">6b3d1aa677b33300132628489a10616f</sp_widget>
+        <sp_column display_value="1">073e66c6dbaa1010724a196c299619cc</sp_column>
+        <sp_widget display_value="KPI table">d8f380f4db011010724a196c299619b3</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
-        <sys_created_by>Medni</sys_created_by>
-        <sys_created_on>2020-05-25 08:36:58</sys_created_on>
-        <sys_id>7aa604b8db011010724a196c29961901</sys_id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-12 07:35:52</sys_created_on>
+        <sys_id>754e66c6dbaa1010724a196c299619fa</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
         <sys_policy/>
         <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
-        <sys_update_name>sp_instance_7aa604b8db011010724a196c29961901</sys_update_name>
-        <sys_updated_by>Medni</sys_updated_by>
-        <sys_updated_on>2020-05-25 08:36:58</sys_updated_on>
+        <sys_update_name>sp_instance_754e66c6dbaa1010724a196c299619fa</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-12 07:35:52</sys_updated_on>
         <title/>
         <url/>
         <widget_parameters/>
     </sp_instance>
-    <sys_translated_text action="delete_multiple" query="documentkey=7aa604b8db011010724a196c29961901"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=754e66c6dbaa1010724a196c299619fa"/>
 </record_update>

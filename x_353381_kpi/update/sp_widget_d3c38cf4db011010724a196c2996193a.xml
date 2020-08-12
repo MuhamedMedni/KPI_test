@@ -4,88 +4,192 @@
         <client_script><![CDATA[function($scope, kpiSearchService) {
 	var c = this;
 	
-	$scope.date = false;
-	$scope.duration = false;
-	
-	$scope.list = kpiSearchService.timeDurations.list;
-  $scope.selected = $scope.list[0];
-	
-c.delivery = {
-   value: c.data.date,
-   name: 'delivery'
+	/* 
+		Properties to steer what is visible (via ng-if)
+		
+		Sequence:  Process variable |
+							 Time interval variable | 
+							 Duration variable or Start Date & End Date variables
+		
+		Button: All variables requried to hold values to be clickable
+	*/
 
-};
-
-
-$scope.updateView = function(x){
+	$scope.showButton = false;
+	$scope.showStartAndEndDate = false;
+	$scope.showDuration = false;
+	$scope.showTimeInterval = false;
 	
-	if(x == "Specific day"){
-		$scope.date = true;
-		$scope.duration = false;
-		$scope.test = "";
+	/*
+		in Order to set default value for the Time Duration & Process select variable 
+		and bind select value to ng-model
+		(check angularJS documentation on ng-options for further details)
+	*/
+
+	$scope.durationList = c.data.durationList;
+	$scope.selectedDuration = $scope.durationList[0];
+	
+	$scope.processList = c.data.processList;
+	$scope.selectedProcess = $scope.processList[0];
+	
+	$scope.timeIntervalList = c.data.intervals;
+	$scope.selectedTimeInterval = $scope.timeIntervalList[0];
+	
+	/*
+		SpDatePicker: Directive expect a field object to bind to client controller
+	  value used to create dubble binding with ng-model
+*/
+c.startDate = {
+	value: "",
+	name: ""
+}
+	
+c.endDate = {
+	value: "",
+	name: ""
+}
+
+
+$scope.timeSelectVisibile = function(){
+	
+	if($scope.selectedProcess.value !== "none"){
+		$scope.showTimeInterval = true;
+	} else {
+		$scope.showStartAndEndDate = false;
+		$scope.showDuration = false;
+		c.startDate.value = "";
+		c.endDate.value = "";
+		$scope.selectedDuration =  $scope.durationList[0];
+		$scope.showTimeInterval = false;
+		$scope.selectedTimeInterval = $scope.timeIntervalList[0];
+	
+	}
+	
+}
+
+// Function to regulate whether duration or startdate and enddate should be shown
+// based on value chosen in Time interval variable
+	
+$scope.updateDateFieldView = function(){
+	
+	var type = $scope.selectedTimeInterval.value;
+
+	/*
+		In order to make sure no residue values are left, always empty
+		the not chosen date fields in case of user switching between
+	*/
+	if(type == "specificDate"){
+		$scope.showStartAndEndDate = true;
+		$scope.showDuration = false;
+		$scope.selectedDuration = $scope.durationList[0];
 		
 	}
-	if(x == "Time duration"){
-		$scope.duration = true;
-		$scope.date = false;
-		c.start.value = "";
-		c.end.value = "";
+	if(type == "duration"){
+		$scope.showDuration = true;
+		$scope.showStartAndEndDate = false;
+		c.startDate.value = "";
+		c.endDate.value = "";
 	}
+	if(type == "none"){
+		
+		$scope.showStartAndEndDate = false;
+		$scope.showDuration = false;
+		c.startDate.value = "";
+		c.endDate.value = "";
+		$scope.selectedDuration = $scope.durationList[0];
+	}
+	
 }	
 	
-$scope.dateValueChanged = function(){
-	console.log(c.delivery);
-}
-	
-	
-$scope.setModel = function(duration){
-	$scope.pickedDuration = duration;
-}
 
-$scope.fetchDataDuration = function(selected){
-	 kpiSearchService.reload(selected.query);
+$scope.fetchDurationData = function(){
+	
+	var startDate = c.startDate.value;
+	var endDate = c.endDate.value;
+	
+	
+	//KVARSTÅR - DATUMVERIFIERING
+	var testStart = new Date(startDate);
+	var testEnd = new Date(endDate);
+	//KVARSTÅR - DATUMVERIFIERING
+	
+	
+	if($scope.selectedDuration.query){
+		kpiSearchService.reload($scope.selectedDuration.query,$scope.selectedProcess.tableName,$scope.selectedProcess.unique);
+	
+	}
+	
+	else {
+		//$scope.fetchDataSpeceificDates(c.startDate.value, c.endDate.value);
+		var query = "sys_created_onBETWEENjavascript:gs.dateGenerate('"+startDate+"','00:00:00')@javascript:gs.dateGenerate('"+endDate+"','23:59:59')";
+	kpiSearchService.reload(query, $scope.selectedProcess.tableName,$scope.selectedProcess.unique); 
+	}
+	
 }
 	
-$scope.fetchDataSpeceificDates = function(start, end){
-	var query = "sys_created_onBETWEENjavascript:gs.dateGenerate("+start+",'00:00:00')@javascript:gs.dateGenerate("+end+",'23:59:59')";
-	kpiSearchService.reload(query);
+/*
+	$scope.fetchDataSpeceificDates = function(start, end){
+	var query = "sys_created_onBETWEENjavascript:gs.dateGenerate('"+start+"','00:00:00')@javascript:gs.dateGenerate('"+end+"','23:59:59')";
+	kpiSearchService.reload(query, $scope.selectedProcess.tableName,$scope.selectedProcess.unique); 
 }
+*/
+	
 
+	
+/*
 
-//date pickers
+Since ng-if creates a child scope 
 	
-c.start = {
-	value: "",
-	name: ""
-}
-	
-c.end = {
-	value: "",
-	name: ""
-}
+*/
 
+$scope.$watch("c.endDate.value", function(newValue, oldValue){
+
+	if(newValue && c.startDate.value){
+		$scope.showButton = true;
+	} else {
+		$scope.showButton = false;
+	}
+
+});
 	
+$scope.$watch("c.startDate.value", function(newValue, oldValue){
+
+	if(newValue && c.endDate.value){
+		$scope.showButton = true;
+	} else {
+		$scope.showButton = false;
+	}
+
+});
+	
+	
+$scope.$watch("selectedDuration", function(newValue, oldValue){
+
+	if(newValue.query == false){
+		$scope.showButton = false;
+	} else {
+		$scope.showButton = true;
+	}
+
+});
+	
+
 	
 }]]></client_script>
         <controller_as>c</controller_as>
-        <css>.flexbox {
-	display: flex;
-  flex-direction: row;
-  //flex-basis: fit-content;
-  //align-items: center;
-  //justify-content: center;
-	width: 75%;
-}
-
-.item {
-	width: 30%;
+        <css>.item {
+	width: 40%;
   margin-left: 10px;
   margin-right: 10px;
 }
 
 
-
-</css>
+// Only used in testing purposes, remove when table widget is ready
+ul {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -101,7 +205,81 @@ c.end = {
         <roles/>
         <script><![CDATA[(function() {
 
-data.date = new GlideDate();
+	
+// Blocks to seperate input fromn non-input as long as GlideAjax is used
+// in testing purposes
+	
+/* Labels */
+	
+if(!input){
+	
+	
+ // list container
+//	data.timeDurations = {
+	//list:	[
+	data.durationList =	[
+		{label: "-None-", query: false},
+		{label: "Today", query: "sys_created_onONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()"},
+		{label: "Yesterday", query: "sys_created_onONYesterday@javascript:gs.beginningOfYesterday()@javascript:gs.endOfYesterday()"},
+		{label: "Tomorrow", query: "sys_created_onONTomorrow@javascript:gs.beginningOfTomorrow()@javascript:gs.endOfTomorrow()"},
+		{label: "This week", query: "sys_created_onONThis week@javascript:gs.beginningOfThisWeek()@javascript:gs.endOfThisWeek()"},
+		{label: "Last week", query: "sys_created_onONLast week@javascript:gs.beginningOfLastWeek()@javascript:gs.endOfLastWeek()"},
+		{label: "Next week", query: "sys_created_onONNext week@javascript:gs.beginningOfNextWeek()@javascript:gs.endOfNextWeek()"},
+		{label: "This month", query: "sys_created_onONThis month@javascript:gs.beginningOfThisMonth()@javascript:gs.endOfThisMonth()"},
+		{label: "Last month", query: "sys_created_onONLast month@javascript:gs.beginningOfLastMonth()@javascript:gs.endOfLastMonth()"},
+		{label: "Next month", query: "sys_created_onONNext month@javascript:gs.beginningOfNextMonth()@javascript:gs.endOfNextMonth()"},
+		// Start
+		{label: "Last 3 months", query: "sys_created_onONLast 3 months@javascript:gs.beginningOfLast3Months()@javascript:gs.endOfLast3Months()"},
+		{label: "Last 6 months", query: "sys_created_onONLast 6 months@javascript:gs.beginningOfLast6Months()@javascript:gs.endOfLast6Months()"},
+		{label: "Last 9 months", query: "sys_created_onONLast 9 months@javascript:gs.beginningOfLast9Months()@javascript:gs.endOfLast9Months()"},
+		{label: "Last 12 months", query: "sys_created_onONLast 12 months@javascript:gs.beginningOfLast12Months()@javascript:gs.endOfLast12Months()"},
+		{label: "This quarter", query: "sys_created_onONThis quarter@javascript:gs.beginningOfThisQuarter()@javascript:gs.endOfThisQuarter()"},
+		{label: "Last quarter", query: "sys_created_onONThis quarter@javascript:gs.beginningOfThisQuarter()@javascript:gs.endOfThisQuarter()"},
+		{label: "Last 2 quarters", query: "sys_created_onONLast 2 quarters@javascript:gs.beginningOfLast2Quarters()@javascript:gs.endOfLast2Quarters()"},
+		//Lacking from "Next quarter" to last option except "This Year" which is included
+		// Wait for more specified queries
+		//End
+		{label: "This year", query: "sys_created_onONThis year@javascript:gs.beginningOfThisYear()@javascript:gs.endOfThisYear()"}
+		]
+//	};
+	
+	
+	
+	data.intervals = [
+		{label: "-None-", value: "none"},
+		{label: "Start and end date", value: "specificDate"},
+		{label: "Duration", value: "duration"}
+	]
+	
+	
+	data.processList = [];
+	var placeholder = {label: "-None-", value: "none"};
+	data.processList.push(placeholder);
+
+	var fetchProcesses = new GlideRecord("x_353381_kpi_kpi_process");
+	fetchProcesses.addActiveQuery();
+	fetchProcesses.query();
+	while(fetchProcesses.next()){
+		var kpi = {
+			label: fetchProcesses.getValue("name"),
+			tableName: fetchProcesses.getValue("id"),
+			unique: fetchProcesses.getUniqueValue()
+		}
+		data.processList.push(kpi);
+	}
+
+	
+} 
+	
+if(input){
+
+	var KPIScript = new KPIHandler();
+	data.firstTest = KPIScript.fetchKpiDefinitionData(input.query, input.process, input.definitionId);
+	
+}
+	
+
+	
 	
 })();]]></script>
         <servicenow>false</servicenow>
@@ -109,57 +287,84 @@ data.date = new GlideDate();
         <sys_created_by>Medni</sys_created_by>
         <sys_created_on>2020-05-25 08:24:27</sys_created_on>
         <sys_id>d3c38cf4db011010724a196c2996193a</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>KPI Dashboard</sys_name>
         <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
         <sys_policy/>
         <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
         <sys_update_name>sp_widget_d3c38cf4db011010724a196c2996193a</sys_update_name>
-        <sys_updated_by>Medni</sys_updated_by>
-        <sys_updated_on>2020-05-25 08:28:27</sys_updated_on>
-        <template><![CDATA[<!-- Ett fält för range type, alterera två datepickers alt en select baserat på vald date range -->
-<!-- Testa använd service för att förvarra "relative range" värdena-->
-<!-- Se över sett att få dessa att lägga sig horisontellt, exempelvis via CSS flexbox-->
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-12 07:28:20</sys_updated_on>
+        <template><![CDATA[<div  class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+  
+      
+      <!-- Process selection -->
+      <div class="col-xs-2" style="margin-right:10px">
+        <label>Select your process</label>
+        <select class="form-control" ng-options="process as process.label for process in processList" ng-model="selectedProcess" ng-change="timeSelectVisibile()"></select>
+      </div>
+      
+      <!-- Select time interval -->
+      <!-- WHAT TO DO ABOUT OPTIONS VS CHANGE?? -->
+      <div ng-if="showTimeInterval" class="col-xs-2" style="margin-right:10px;margin-left:10px">
+        <label>Select time interval:</label>
+        <select class="form-control" ng-options="intervalType as intervalType.label for intervalType in timeIntervalList" ng-model="$parent.selectedTimeInterval" ng-change="updateDateFieldView()"></select>
+      </div>
+      
+      <!-- Show durataion-->
+  		<div class="col-xs-6">
+ 				<div ng-if="showDuration == true" class="form-group" style="margin-left:10px">
+    			<label>Select time duration of your choice</label> 
+     			<!-- Ng-if adds extra layer of scope, therefore ng-model require $parent to bind to client controller scope -->
+  				<select class="form-control"  ng-options="duration as duration.label for duration in durationList" ng-model="$parent.selectedDuration" style="width:40%"></select>
+				</div>
+    		
+        <!-- Show start and end date -->
+  	 		<div ng-if="showStartAndEndDate == true">
+    			<div class="item col-xs-6">
+      			<label>Start Date:</label>
+            <!-- ng-change=updateStartDate(c.startDate.value) -->
+						<sp-date-picker field="c.startDate" ng-model="c.startDate.value"></sp-date-picker>
+    			</div> 
+    			<div class="item col-xs-6"> 
+      			<label>End Date:</label>
+            <!-- ng-change=updateEndDate(c.endDate.value) -->
+  					<sp-date-picker field="c.endDate" ng-model="c.endDate.value" ></sp-date-picker>
+    			</div> 
+   			</div>
+	  	</div>	
+  
+  
+  
+		</div>  <!-- End of row -->
+	</div> <!-- End of panel body-->   
+</div> <!-- End of panel-->
 
-<div  class="panel panel-default">
-  <div class="panel-body flexbox">
-    
-    <!-- Type of duration variable -->
-		<div class="form-group" style="margin-right:10px">
-  		<label>Select watch type of duration:</label>
-  		<select class="form-control" ng-model="durationType" ng-change="updateView(durationType)">
-    		<option>Specific day</option>
-    		<option>Time duration</option>
-  		</select>
-		</div>
-    
-    
-    
-    <!-- Time duration variable -->
- 		<div ng-if="duration == true" class="form-group">
-    	<label>Select time duration of your choice</label> 
-  		<select class="form-control" ng-options="item as item.label for item in list track by item.label" ng-model="selected">
-  		</select>
-		</div>
-    
-
-    <!-- Sp Date Pickers -->
-   <div ng-if="date == true" class="flexbox">
-    <div class="item">
-      <label>Start Date:</label>
-			<sp-date-picker field="c.start" ng-model="c.start.value" sn-change="dateValueChanged()" ></sp-date-picker>
-    </div> 
-    <div class="item"> 
-      <label>End Date:</label>
-  		<sp-date-picker field="c.end" ng-model="c.end.value" sn-change="dateValueChanged()" ></sp-date-picker>
-    </div> 
-   </div>
-    
-    
-  </div> 
-   <button class="btn btn-primary" ng-click="fetchDataDuration(selected)">Send</button>
+<div>
+	<button ng-if= "!showButton" class="btn btn-warning" style="opacity:0.3">Send</button>
+	<button ng-if = "showButton" class="btn btn-warning" ng-click="fetchDurationData()">Send</button>
 </div>
 
-]]></template>
+
+
+<!-- Code below is only for testing purposes
+     Remove when done -->
+
+  <h1>
+    Test Template
+  </h1>
+<!--  <div  ng-repeat="(key, value) in c.data.kpi">
+    <h4>{{key}}</h4>
+   <ul>
+      <li ng-repeat="k in value">
+          <span ng-if="k.group">{{k.group}}</span>
+        	 <span ng-if="!k.group">Assignment group empty</span>
+          <p>{{k.result}}%</p>
+      </li>
+   </ul>
+</div> -->
+  ]]></template>
     </sp_widget>
 </record_update>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">82a6c0b8db011010724a196c29961969</sp_column>
+        <sp_widget display_value="Project Kpi">6b3d1aa677b33300132628489a10616f</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>Medni</sys_created_by>
+        <sys_created_on>2020-05-25 08:36:58</sys_created_on>
+        <sys_id>7aa604b8db011010724a196c29961901</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
+        <sys_update_name>sp_instance_7aa604b8db011010724a196c29961901</sys_update_name>
+        <sys_updated_by>Medni</sys_updated_by>
+        <sys_updated_on>2020-05-25 08:36:58</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters/>
+    </sp_instance>
+    <sys_translated_text action="DELETE" query="documentkey=7aa604b8db011010724a196c29961901"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="KPID">138ff324db011010724a196c2996191d</application>
+        <file_path/>
+        <instance_id>df6fa2eddb703bc03050ac44d49619bd</instance_id>
+        <instance_name>dev80789</instance_name>
+        <name>sp_instance_7aa604b8db011010724a196c29961901</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance"><sp_instance action="INSERT_OR_UPDATE"><active>true</active><class_name/><color>default</color><css/><glyph/><id/><order>1</order><roles/><short_description/><size>md</size><sp_column display_value="1">82a6c0b8db011010724a196c29961969</sp_column><sp_widget display_value="Project Kpi">6b3d1aa677b33300132628489a10616f</sp_widget><sys_class_name>sp_instance</sys_class_name><sys_created_by>Medni</sys_created_by><sys_created_on>2020-05-25 08:36:58</sys_created_on><sys_id>7aa604b8db011010724a196c29961901</sys_id><sys_mod_count>0</sys_mod_count><sys_name/><sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package><sys_policy/><sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope><sys_update_name>sp_instance_7aa604b8db011010724a196c29961901</sys_update_name><sys_updated_by>Medni</sys_updated_by><sys_updated_on>2020-05-25 08:36:58</sys_updated_on><title/><url/><widget_parameters/></sp_instance><sys_translated_text action="delete_multiple" query="documentkey=7aa604b8db011010724a196c29961901"/></record_update>]]></payload>
+        <payload_hash>1910547758</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>538ff324db011010724a196c2996191f</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Medni</sys_created_by>
+        <sys_created_on>2020-05-25 08:36:58</sys_created_on>
+        <sys_id>7aa604b8db011010724a196c29961903</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1724afa52d60000001</sys_recorded_at>
+        <sys_updated_by>Medni</sys_updated_by>
+        <sys_updated_on>2020-05-25 08:36:58</sys_updated_on>
+        <type>Instance</type>
+        <update_guid>72a604b80f011010c96d0196bbb6d403</update_guid>
+        <update_guid_history>72a604b80f011010c96d0196bbb6d403:1910547758</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">b1db6286dbaa1010724a196c2996196c</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-12 07:25:12</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance">sp_instance</sys_db_object>
+        <sys_id>13d32272aaac40cc92ba31abbf278be4</sys_id>
+        <sys_metadata>7aa604b8db011010724a196c29961901</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
+        <sys_scope_delete display_value="">0058125f294744cc8000844756ea10d9</sys_scope_delete>
+        <sys_update_name>sp_instance_7aa604b8db011010724a196c29961901</sys_update_name>
+        <sys_update_version display_value="sp_instance_7aa604b8db011010724a196c29961901">7aa604b8db011010724a196c29961903</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-12 07:25:12</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

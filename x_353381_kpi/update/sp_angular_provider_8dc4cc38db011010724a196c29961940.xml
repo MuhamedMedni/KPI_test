@@ -4,39 +4,18 @@
         <script><![CDATA[function($http){
 	
 	var records = [];
+  
 	
-	var timeDurations = {
-	list:	[
-		{label: "Today", query: "sys_created_onONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()"},
-		{label: "Yesterday", query: "sys_created_onONYesterday@javascript:gs.beginningOfYesterday()@javascript:gs.endOfYesterday()"},
-		{label: "Tomorrow", query: "sys_created_onONTomorrow@javascript:gs.beginningOfTomorrow()@javascript:gs.endOfTomorrow()"},
-		{label: "This week", query: "sys_created_onONThis week@javascript:gs.beginningOfThisWeek()@javascript:gs.endOfThisWeek()"},
-		{label: "Last week", query: "sys_created_onONLast week@javascript:gs.beginningOfLastWeek()@javascript:gs.endOfLastWeek()"},
-		{label: "Next week", query: "sys_created_onONNext week@javascript:gs.beginningOfNextWeek()@javascript:gs.endOfNextWeek()"},
-		{label: "This month", query: "sys_created_onONThis month@javascript:gs.beginningOfThisMonth()@javascript:gs.endOfThisMonth()"},
-		{label: "Last month", query: "sys_created_onONLast month@javascript:gs.beginningOfLastMonth()@javascript:gs.endOfLastMonth()"}
-		]
-	};
-	
-	
-	
-	
-	//fetch picked time duration 
-	//send to table for query
-	
-	function reload(duration){
-		console.log(duration);
-	var query =	timeDurations.list.filter(function(times){
-			if(times.query == duration){
-				console.log(times.query)
-				return times.query;
-			}
-		});
-		$http.get('/api/now/table/incident?sysparm_query='+query+'&sysparm_limit=10')
-           .then(function(res) { 
-			records = res.data.results;
+	function reload(query, process, definitionId){
+
+		var apiQuery = '/api/x_353381_kpi/kpi_api/testOne?query='+query+'&definitionId='+definitionId;		
+		$http.get(apiQuery).then(function(res) {
+			//var result = res.data.result; 
+			//return result
+			records = res.data.result;
 			console.log(records);
-		});
+		}); 
+		
 	}
 	
 	function get() {
@@ -44,7 +23,6 @@
    }
 	
 	return {
-		timeDurations: timeDurations,
 		reload: reload,
 		get: get
 	}
@@ -53,14 +31,14 @@
         <sys_created_by>Medni</sys_created_by>
         <sys_created_on>2020-05-25 08:29:12</sys_created_on>
         <sys_id>8dc4cc38db011010724a196c29961940</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>kpiSearchService</sys_name>
         <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
         <sys_policy/>
         <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
         <sys_update_name>sp_angular_provider_8dc4cc38db011010724a196c29961940</sys_update_name>
-        <sys_updated_by>Medni</sys_updated_by>
-        <sys_updated_on>2020-05-25 08:29:12</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-12 07:32:43</sys_updated_on>
         <type>service</type>
     </sp_angular_provider>
 </record_update>

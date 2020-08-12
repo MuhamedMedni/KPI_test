@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_353381_kpi.KPIHandler</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>A very generic script used to fetch KPI definitions and aggregate result</description>
+        <name>KPIHandler</name>
+        <script><![CDATA[var KPIHandler = Class.create();
+KPIHandler.prototype = {
+        initialize: function() {},
+
+        /*
+	**
+    ** 	Top-level function: fetch data from kpi defintion records
+    **	all necessary calculations handled from 
+    **
+    	!!! Set on only one KPI definition is current form !!!
+	**
+    */
+        fetchKpiDefinitionData: function(dateQuery, /* Not neccessary with process argument? */ process, definitionId) {
+
+            var kpis = [];
+
+            var fetchKpiDefinitionData = new GlideRecord('x_353381_kpi_kpi_definition');
+            fetchKpiDefinitionData.addQuery("u_kpi_process", definitionId);
+            fetchKpiDefinitionData.query();
+            while (fetchKpiDefinitionData.next()) {
+				
+				var kpiMeta = {};
+                var kpiDefinition = {};
+                kpiDefinition.dateQuery = dateQuery;
+                kpiDefinition.table = fetchKpiDefinitionData.getValue("table");
+                kpiDefinition.rangeQuery = fetchKpiDefinitionData.getValue("base_query");
+                kpiDefinition.targetQuery = fetchKpiDefinitionData.getValue("target_query");
+                kpiDefinition.maximum = parseInt(fetchKpiDefinitionData.getValue("maximum"));
+                kpiDefinition.minimum = parseInt(fetchKpiDefinitionData.getValue("minimum"));
+                kpiDefinition.type = fetchKpiDefinitionData.getValue("type");
+                var result = this.AggregateAndReturnResult(kpiDefinition);
+                var name = fetchKpiDefinitionData.getValue("name");
+				kpiMeta.name = name;
+                kpiMeta.result = result;
+				kpis.push(kpiMeta);
+
+            }
+            return kpis;
+
+        },
+
+
+
+        /* 
+        **	!! Hardcoded to aggregate around assignment group
+        */
+
+        AggregateAndReturnResult: function(KPI) {
+
+            var rangeList = [];
+            var targetList = [];
+
+            //Range is based on all records that falls within first query
+            var getRange = new GlideAggregate(KPI.table);
+            getRange.addAggregate(KPI.type, "assignment_group");
+            getRange.addEncodedQuery(KPI.dateQuery + "^" + KPI.rangeQuery);
+            getRange.groupBy("assignment_group");
+            getRange.query();
+            while (getRange.next()) {
+                var rangeGroupBy = {};
+
+                // ??? Performance hit on getDisplayValue() ??? 
+                rangeGroupBy.group = getRange.assignment_group.getDisplayValue();
+                rangeGroupBy.range = getRange.getAggregate(KPI.type, "assignment_group");
+                rangeList.push(rangeGroupBy);
+            }
+
+            //Range is based on all records that falls within second query
+            var getTarget = new GlideAggregate(KPI.table);
+            getTarget.addAggregate(KPI.type, "assignment_group");
+            getTarget.addEncodedQuery(KPI.dateQuery + "^" + KPI.targetQuery);
+            getTarget.query();
+            while (getTarget.next()) {
+                var targetGroupBy = {};
+
+                // ??? Performance hit on getDisplayValue() ??? 
+                targetGroupBy.group = getTarget.assignment_group.getDisplayValue();
+                targetGroupBy.target = getTarget.getAggregate(KPI.type, "assignment_group");
+                targetList.push(targetGroupBy);
+            }
+			
+			//Merged range and target arrays based on common property, which is assignment group 
+            var MergeRangeWithTarget = new CollectionUtil();
+            var mergedArray = MergeRangeWithTarget.mergeArraysByProperty(rangeList, targetList, "group", true);
+
+
+            var returnArray = this._addResult(mergedArray, KPI);
+            
+			return returnArray;
+			
+            },
+
+
+
+
+            /*
+			**  INTERNAL FUNCTIONS SECTION
+			**
+            **   _addResult()
+			**   _undefinedCheck()
+			**   _CalculateResultAsPercentage()
+			**   _PercentageToInteger
+			**  _compareToMaxAndMin()
+            */
+
+			//Shall this block be added to AggregateAndReturnResult() scope insteead?
+            _addResult: function(array, kpi) {
+                    //forEach() or other scoping functions doesnt allow for calling internal function
+                    for (var count = 0; count < array.length; count++) {
+                        var target = this._undefinedCheck(array[count].target);
+                        var range = this._undefinedCheck(array[count].range);
+
+                        var compareTargetToRange = this._CalculateResultAsPercentage(parseInt(target), parseInt(range));
+
+                        array[count].result = this._PercentageToInteger(compareTargetToRange);
+
+                        array[count].withinRange = this._compareToMaxAndMin(array[count].result, kpi.maximum, kpi.minimum);
+
+                    }
+                    return array;
+                },
+	
+                //single value --> expand to arrays?
+                _undefinedCheck: function(value) {
+                    var zeroValue = "0";
+                    if (typeof value === "undefined") {
+                        return zeroValue;
+                    } else {
+                        return value;
+                    }
+                },
+
+                _CalculateResultAsPercentage: function(target, range) {
+
+                    var sumAsPerCentage = (target / range);
+                    return sumAsPerCentage;
+                },
+
+                _PercentageToInteger: function(decimal) {
+                    var sumAsInteger = decimal * 100;
+                    return sumAsInteger;
+                },
+                
+				// Add more rigid type checeks
+                _compareToMaxAndMin: function(compareValue, maxValue, minValue) {
+
+                    // Maximum and minimum value are set on KPI definition record
+
+                    if (typeof maxValue === 'number' && typeof minValue === 'number') {
+
+                        if (compareValue >= minValue && compareValue <= maxValue) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+
+                    } else {
+                        return false;
+                    }
+                },
+
+
+
+                type: 'KPIHandler'
+        };]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-12 06:56:35</sys_created_on>
+        <sys_id>7d156a02dbaa1010724a196c299619c5</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>KPIHandler</sys_name>
+        <sys_package display_value="KPID" source="x_353381_kpi">138ff324db011010724a196c2996191d</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="KPID">138ff324db011010724a196c2996191d</sys_scope>
+        <sys_update_name>sys_script_include_7d156a02dbaa1010724a196c299619c5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-12 06:58:46</sys_updated_on>
+    </sys_script_include>
+</record_update>
